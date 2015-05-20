@@ -1,0 +1,38 @@
+<div class="main">
+	<header class="head">
+		<div class="head__content">
+			<h1 class="head__header">{{name}}</h1>
+			<h5 class="head__subheader">{{title}}</h5>
+		</div>
+		<hr class="head__divider"/>
+		<ul class="head__nav ui-list">
+			<li data-section="work">Work</li>
+			<li data-section="about">About</li>
+			<li><a href="mailto:{{ email.val }}">Contact</a></li>
+		</ul>
+	</header>
+
+	<section class="work section section--active">
+		<ul class="projects ui-list">
+			{{#each projects}}
+				{{#if this.show}}
+					<li class="project" data-index="{{@index}}">
+						<div class="project__placeholder">
+							{{#if this.background}}
+								<img class="project__img" src="{{this.background}}">
+							{{/if}}
+						</div>
+						<a href="{{this.url}}" target="_blank">
+							<h6 class="project__header">{{this.name}}</h6>
+						</a>
+					</li>
+					{{> project this}}
+				{{/if}}
+			{{/each}}
+		</ul>
+	</section>
+
+	<section class="about section">
+		<p>{{about}}</p>
+	</section>
+</div>

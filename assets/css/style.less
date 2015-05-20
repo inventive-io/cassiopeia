@@ -1,0 +1,279 @@
+// Variables
+// --------------------------------------------------
+
+// z-index
+@z-index-1:   100;
+@z-index-2:   200;
+@z-index-3:   300;
+@z-index-4:   400;
+@z-index-5:   500;
+@z-index-6:   600;
+@z-index-7:   700;
+@z-index-8:   800;
+@z-index-9:   900;
+@z-index-10: 1000;
+
+// font-sizes
+@h1: 60.750px;
+@h2: 42.222px;
+@h3: 40.500px;
+@h4: 28.148px;
+@h5: 27.000px;
+@h6: 18.765px;
+@p: 18px;
+@caption: 12.510px;
+
+// font weights
+@fw-light:     300;
+@fw-normal:    400;
+@fw-semi-bold: 600;
+@fw-bold:      700;
+
+// space sizing
+@space-smaller: 6.25px;
+@space-small: 12.5px;
+@space-medium: 25px;
+@space-large: 50px;
+@space-larger: 100px;
+
+@color-brand-white: rgb(255, 255, 255);
+@color-blue-light: rgb(107, 208, 246);
+@color-greyblue: rgb(219, 231, 235); // placeholder
+
+@color-brand-grey: rgb(102, 102, 102);
+@color-brand-grey--dark: rgb(78, 76, 76);
+
+// Globals
+// --------------------------------------------------
+
+// Major Third
+// http://modularscale.com/scale/?px1=18&px2=95&ra1=1.5&ra2=0
+h1 { font-size: @h1; }
+h2 { font-size: @h2; }
+h3 { font-size: @h3; }
+h4 { font-size: @h4; }
+h5 { font-size: @h5; }
+h6 { font-size: @h6; }
+p {
+	font-size: @p;
+	line-height: 1.6;
+}
+.caption { font-size: @caption; }
+
+body {
+	font-family: 'Cardo', serif;
+	color: @color-brand-grey;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: @fw-normal;
+	color: @color-brand-grey--dark;
+}
+
+a:link {
+	color: inherit;
+    text-decoration: none;
+}
+
+a:visited {
+    color: inherit;
+}
+
+
+// Blocks
+// --------------------------------------------------
+.about {
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+.head {
+	padding: @space-larger 0;
+	text-align: center;
+}
+
+.head__divider {
+	margin-top: @space-medium;
+	width: 100px;
+}
+
+.head__header {
+	font-weight: @fw-semi-bold;
+	margin-bottom: @space-medium;
+}
+
+.projects {
+	text-align: center;
+}
+
+.project {
+	display: inline-block;
+	margin: 0 17.5px;
+	margin-bottom: @space-medium;
+}
+
+.project:hover {
+	opacity: 0.7;
+}
+
+.project__header {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: @color-brand-grey;
+	margin-top: @space-small;
+	width: 250px;
+}
+
+.project__img {
+	height: 100%;
+}
+
+.project__placeholder {
+	background: @color-greyblue;
+	height: 250px;
+	overflow: auto;
+	width: 250px;
+	position: relative;
+}
+
+.head__nav {
+	margin-top: @space-medium;
+}
+
+.head__nav li {
+	cursor: pointer;
+	display: inline-block;
+	font-family: 'Montserrat', sans-serif;
+	margin: 0 12.5px;
+}
+
+.head__nav li:hover,
+.head__nav li.selected {
+	color: @color-blue-light;
+}
+
+.main {
+	background: rgb(255, 255, 255);
+}
+
+.proj {
+	background: rgb(255, 255, 255);
+	box-sizing: border-box;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	height: 100%;
+	position: fixed;
+	padding: @space-larger 0;
+	z-index: @z-index-1;
+	transform: translateY(100%);
+	transition: all 400ms ease-in-out;
+}
+
+	.proj--active {
+		transform: translateY(0%);
+	}
+
+	.proj__container {
+		margin: 0 auto;
+		max-width: 700px;
+	}
+
+	.proj__icon {
+		cursor: pointer;
+		font-size: 18.765px;
+		position: absolute;
+		right: @space-medium;
+		top: @space-medium;
+	}
+
+	.proj__header {
+		text-align: center;
+		margin-bottom: @space-large;
+	}
+
+	.proj__text {
+		margin-top: @space-medium;
+		text-align: left;
+	}
+
+.wrapper {
+	padding: @space-larger;
+}
+
+// Shown state
+.main,
+.proj {
+	height: 100%;
+	overflow: scroll;
+}
+
+.work {
+	margin: 0 auto;
+	max-width: 1000px;
+}
+
+.section {
+	display: none;
+	opacity: 0;
+	padding-bottom: @space-larger;
+}
+	.section--active {
+		display: block;
+		animation: fade-in 500ms;
+		animation-fill-mode: forwards;
+	}
+
+	@keyframes fade-in {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
+
+.markdown {
+	pre {
+		box-sizing: border-box;
+		background: rgba(0, 0, 0, 0.03);
+		line-height: 25px;
+		padding: @space-medium;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		color: @color-brand-grey--dark;
+		margin: @space-medium 0 @space-small 0;
+	}
+
+	pre, ul, ol {
+		margin: @space-medium 0;
+	}
+
+	pre, span, p, ul, ol { color: @color-brand-grey; }
+
+	p {
+		margin-bottom: @space-small;
+	}
+
+	ul li,
+	ol li {
+		margin-bottom: @space-smaller;
+	}
+
+	blockquote {
+		border-left: 2px solid @color-brand-grey;
+		padding-left: @space-small;
+		font-style: italic;
+	}
+
+	img {
+		width: 100%;
+		margin-bottom: @space-medium;
+	}
+
+	text-align: left;
+}
